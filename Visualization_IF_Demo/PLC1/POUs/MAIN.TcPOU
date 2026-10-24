@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="MAIN" Id="{5a19bbac-2113-44f8-830d-eb7bdf3a42a6}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	//INPUTS
+	iNumber    : INT;
+	bSwitch1   : BOOL;
+	bSwitch2   : BOOL;
+	bSwitch3   : BOOL;
+	bSwtich4   : BOOL;
+	//OUTPUTS
+	bLight1    : BOOL;
+	bLight2    : BOOL;
+	bLight3    : BOOL;
+	bLight4    : BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[bLight1 := Blight2 := bLight3 := bLight4 := FALSE;
+
+IF (iNumber >= 0) AND (iNumber <= 8000) THEN
+	bLight1 := TRUE;
+ELSIF (iNumber > 8000) AND (iNumber <= 26000) THEN
+	bLight2 := TRUE;
+ELSIF (iNumber > 16000) AND (iNumber <= 24000) THEN
+	bLight3 := TRUE;
+ELSE
+	bLight4 := TRUE;
+END_IF]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
